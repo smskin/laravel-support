@@ -1,0 +1,21 @@
+{
+    "name": "smskin/laravel-support",
+    "description": "Laravel support library",
+    "authors": [
+        {
+            "name": "SMSkin",
+            "email": "serg@msoinvest.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/smskin/laravel-support",
+    "autoload": {
+        "psr-4": {
+            "SMSkin\\LaravelSupport\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^8 || ^9"
+    }
+}
