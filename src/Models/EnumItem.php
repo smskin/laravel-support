@@ -8,21 +8,13 @@ class EnumItem
 
     public string $title;
 
-    /**
-     * @param string $id
-     * @return self
-     */
-    public function setId(string $id): self
+    public function setId(string $id): static
     {
         $this->id = $id;
         return $this;
     }
 
-    /**
-     * @param string $title
-     * @return self
-     */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): static
     {
         $this->title = $title;
         return $this;

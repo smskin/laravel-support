@@ -25,7 +25,7 @@ abstract class BaseController
         }
     }
 
-    abstract public function execute(): self;
+    abstract public function execute(): static;
 
     public function getResult(): mixed
     {
