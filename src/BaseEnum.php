@@ -10,7 +10,10 @@ abstract class BaseEnum
     /**
      * @return Collection<EnumItem>
      */
-    abstract public static function items(): Collection;
+    public static function items(): Collection
+    {
+        return collect([]);
+    }
 
     /**
      * @return string[]
