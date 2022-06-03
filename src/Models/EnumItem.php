@@ -6,7 +6,7 @@ class EnumItem
 {
     public string $id;
 
-    public string $title;
+    public ?string $title = null;
 
     public function setId(string $id): static
     {
@@ -14,7 +14,11 @@ class EnumItem
         return $this;
     }
 
-    public function setTitle(string $title): static
+    /**
+     * @param string|null $title
+     * @return EnumItem
+     */
+    public function setTitle(?string $title): EnumItem
     {
         $this->title = $title;
         return $this;
