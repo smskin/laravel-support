@@ -9,7 +9,7 @@ abstract class BaseController
 {
     use RequestTrait;
 
-    protected mixed $result;
+    protected mixed $result = null;
 
     /**
      * BaseAction constructor.
