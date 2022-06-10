@@ -36,4 +36,11 @@ abstract class BaseEnum
             return $item->id == $id;
         })->firstOrFail();
     }
+
+    public static function findById(string $id): ?EnumItem
+    {
+        return static::items()->filter(function (EnumItem $item) use ($id) {
+            return $item->id == $id;
+        })->first();
+    }
 }
