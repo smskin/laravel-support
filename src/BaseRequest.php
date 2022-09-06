@@ -12,7 +12,10 @@ abstract class BaseRequest
 {
     public bool $isValidated = false;
 
-    abstract public function rules(): array;
+    public function rules(): array
+    {
+        return [];
+    }
 
     /**
      * @return array
@@ -56,6 +59,12 @@ abstract class BaseRequest
     public function validate(): void
     {
         if ($this->isValidated) {
+            return;
+        }
+
+        if (empty($this->rules()))
+        {
+            $this->isValidated = true;
             return;
         }
 
