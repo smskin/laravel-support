@@ -2,8 +2,8 @@
 
 namespace SMSkin\LaravelSupport;
 
+use Exception;
 use SMSkin\LaravelSupport\Traits\RequestTrait;
-use Illuminate\Validation\ValidationException;
 
 abstract class BaseAction
 {
@@ -15,12 +15,11 @@ abstract class BaseAction
      * BaseAction constructor.
      *
      * @param BaseRequest|null $request
-     * @throws ValidationException
+     * @throws Exception
      */
-    final public function __construct(?BaseRequest $request = null)
+    final public function __construct(protected ?BaseRequest $request)
     {
-        if ($request) {
-            $this->request = $request;
+        if (!is_null($this->request)) {
             $this->validateRequest();
         }
     }

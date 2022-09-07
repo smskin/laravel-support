@@ -3,8 +3,8 @@
 namespace SMSkin\LaravelSupport\Traits;
 
 use SMSkin\LaravelSupport\BaseRequest;
-use Exception;
-use Illuminate\Validation\ValidationException;
+use SMSkin\LaravelSupport\Exceptions\InvalidRequestType;
+use SMSkin\LaravelSupport\Exceptions\RequestNotInitialized;
 
 trait RequestTrait
 {
@@ -12,19 +12,14 @@ trait RequestTrait
 
     protected ?string $requestClass;
 
-    /**
-     * @throws ValidationException
-     * @throws Exception
-     */
     protected function validateRequest(): void
     {
-        if ($this->requestClass && !$this->request)
-        {
-            throw new Exception('Request not initialized');
+        if ($this->requestClass && !$this->request) {
+            throw new RequestNotInitialized();
         }
 
         if ($this->requestClass && !($this->request instanceof $this->requestClass)) {
-            throw new Exception(
+            throw new InvalidRequestType(
                 sprintf(
                     "Invalid request type. Expected: %s, Received: %s. Action: %s",
                     $this->requestClass,
@@ -32,9 +27,6 @@ trait RequestTrait
                     static::class
                 )
             );
-        }
-        if ($this->request instanceof BaseRequest) {
-            $this->request->validate();
         }
     }
 }
