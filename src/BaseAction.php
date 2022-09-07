@@ -2,7 +2,6 @@
 
 namespace SMSkin\LaravelSupport;
 
-use Exception;
 use SMSkin\LaravelSupport\Traits\RequestTrait;
 
 abstract class BaseAction
@@ -15,7 +14,6 @@ abstract class BaseAction
      * BaseAction constructor.
      *
      * @param BaseRequest|null $request
-     * @throws Exception
      */
     final public function __construct(protected ?BaseRequest $request)
     {
