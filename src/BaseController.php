@@ -15,7 +15,7 @@ abstract class BaseController
      *
      * @param BaseRequest|null $request
      */
-    final public function __construct(protected ?BaseRequest $request)
+    final public function __construct(protected ?BaseRequest $request = null)
     {
         if (!is_null($this->request)) {
             $this->validateRequest();
