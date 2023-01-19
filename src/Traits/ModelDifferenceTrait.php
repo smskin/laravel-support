@@ -16,7 +16,7 @@ trait ModelDifferenceTrait
     protected array $md = ['original' => [], 'difference' => []];
 
     /** @noinspection PhpUnused */
-    protected static function bootModelDifference(): void
+    protected static function bootModelDifferenceTrait(): void
     {
         static::updating(static function (Model $model) {
             $oldValues = (new static())->setRawAttributes($model->getRawOriginal());
