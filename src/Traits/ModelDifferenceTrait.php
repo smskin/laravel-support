@@ -57,6 +57,9 @@ trait ModelDifferenceTrait
     {
         $data = [];
         $diff = $this->getModelDifference();
+        if (!count($diff)) {
+            return collect();
+        }
         foreach ($diff['new'] as $field => $value) {
             $original = $diff['original'][$field] ?? null;
             $data[] = (new ModelField)
