@@ -2,14 +2,14 @@
 
 namespace SMSkin\LaravelSupport\Models;
 
-class SerializedArrayable
+class SerializedObject
 {
     public string $class;
     public array $data;
 
     /**
      * @param string $class
-     * @return SerializedArrayable
+     * @return SerializedObject
      */
     public function setClass(string $class): self
     {
@@ -27,7 +27,7 @@ class SerializedArrayable
 
     /**
      * @param array $data
-     * @return SerializedArrayable
+     * @return SerializedObject
      */
     public function setData(array $data): self
     {

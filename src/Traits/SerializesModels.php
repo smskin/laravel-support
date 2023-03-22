@@ -4,7 +4,7 @@ namespace SMSkin\LaravelSupport\Traits;
 
 use SMSkin\LaravelSupport\Contracts\Arrayable;
 use SMSkin\LaravelSupport\Contracts\Serializable;
-use SMSkin\LaravelSupport\Models\SerializedArrayable;
+use SMSkin\LaravelSupport\Models\SerializedObject;
 
 trait SerializesModels
 {
@@ -15,8 +15,8 @@ trait SerializesModels
 
     protected function getSerializedPropertyValue($value)
     {
-        if ($value instanceof Arrayable && $value instanceof Serializable) {
-            return (new SerializedArrayable)
+        if ($value instanceof Serializable) {
+            return (new SerializedObject)
                 ->setClass(get_class($value))
                 ->setData($value->__serialize());
         }
@@ -25,13 +25,13 @@ trait SerializesModels
 
     protected function getRestoredPropertyValue($value)
     {
-        if ($value instanceof SerializedArrayable) {
+        if ($value instanceof SerializedObject) {
             return $this->restoreSerializedArrayable($value);
         }
         return $this->parentGetRestoredPropertyValue($value);
     }
 
-    private function restoreSerializedArrayable(SerializedArrayable $value): Arrayable
+    private function restoreSerializedArrayable(SerializedObject $value): Arrayable
     {
         $class = $value->getClass();
 
