@@ -32,7 +32,7 @@ class RPaginatedResourceCollection extends ResourceCollection
     {
         return [
             'meta' => $this->meta,
-            'items' => $this->items,
+            'items' => $this->items->map->toArray($request)->all()
         ];
     }
 }
