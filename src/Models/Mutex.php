@@ -14,6 +14,10 @@ class Mutex
 
     public function unlock(): void
     {
-        Cache::tags([self::CACHE_TAG])->forget(md5($this->key));
+        $facade = Cache::getFacadeRoot();
+        if (Cache::supportsTags()) {
+            $facade = Cache::tags([Mutex::CACHE_TAG]);
+        }
+        $facade->forget(md5($this->key));
     }
 }
