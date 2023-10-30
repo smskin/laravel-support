@@ -42,7 +42,7 @@ class InnFlRule implements Rule
             return false;
         }
 
-        $check_digit = function ($inn, $coefficients) {
+        $check_digit = static function ($inn, $coefficients) {
             $n = 0;
             foreach ($coefficients as $i => $k) {
                 $n += $k * (int)$inn[$i];

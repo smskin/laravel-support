@@ -3,7 +3,6 @@
 namespace SMSkin\LaravelSupport\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use JetBrains\PhpStorm\ArrayShape;
 use OpenApi\Annotations\Property;
 use OpenApi\Annotations\Schema;
 
@@ -45,7 +44,6 @@ class RMetaPagination extends JsonResource
         $this->lastPage = (int)$resource->lastPage();
     }
 
-    #[ArrayShape(['total' => "int", 'currentPage' => "int", 'lastPage' => "int", 'perPage' => "int"])]
     public function toArray($request): array
     {
         return [

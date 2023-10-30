@@ -4,7 +4,6 @@ namespace SMSkin\LaravelSupport\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
-use JetBrains\PhpStorm\ArrayShape;
 use OpenApi\Annotations\Property;
 use OpenApi\Annotations\Schema;
 
@@ -27,7 +26,6 @@ class RPaginatedResourceCollection extends ResourceCollection
         $this->items = $this->collection;
     }
 
-    #[ArrayShape(['meta' => "\SMSkin\LaravelSupport\Resources\RMetaPagination", 'items' => "\Illuminate\Support\Collection"])]
     public function toArray($request): array
     {
         return [

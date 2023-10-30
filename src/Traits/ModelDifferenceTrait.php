@@ -2,6 +2,7 @@
 
 namespace SMSkin\LaravelSupport\Traits;
 
+use BackedEnum;
 use Carbon\CarbonInterval;
 use DateInterval;
 use Illuminate\Database\Eloquent\Model;
@@ -189,7 +190,7 @@ trait ModelDifferenceTrait
                         $changes[$attribute] = $model->getStorableEnumValue($changes[$attribute]);
                     } else {
                         // ToDo: DEPRECATED - only here for Laravel 8 support
-                        $changes[$attribute] = $changes[$attribute] instanceof \BackedEnum
+                        $changes[$attribute] = $changes[$attribute] instanceof BackedEnum
                             ? $changes[$attribute]->value
                             : $changes[$attribute]->name;
                     }

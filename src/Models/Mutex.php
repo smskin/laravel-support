@@ -16,7 +16,7 @@ class Mutex
     {
         $facade = Cache::getFacadeRoot();
         if (Cache::supportsTags()) {
-            $facade = Cache::tags([Mutex::CACHE_TAG]);
+            $facade = Cache::tags([self::CACHE_TAG]);
         }
         $facade->forget(md5($this->key));
     }
