@@ -16,16 +16,11 @@ trait RedisMutexTrait
     {
         $ttl ??= 600;
         $hash = md5($key);
-        $facade = Cache::getFacadeRoot();
-        if (Cache::supportsTags()) {
-            $facade = Cache::tags([Mutex::CACHE_TAG]);
-        }
-        
-        if ($facade->has($hash)) {
+        if (Cache::has($hash)) {
             throw new MutexException($key, 0);
         }
         $mutex = new Mutex($key, $ttl);
-        $facade->put($hash, '1', now()->addSeconds($ttl));
+        Cache::put($hash, '1', now()->addSeconds($ttl));
         return $mutex;
     }
 
